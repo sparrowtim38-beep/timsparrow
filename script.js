@@ -5,6 +5,22 @@ const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
 const sections = [...document.querySelectorAll('main section[id]')];
 const menuToggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.nav-links');
+const themeToggle = document.querySelector('.theme-toggle');
+
+function syncThemeButton() {
+  const dark = document.documentElement.dataset.theme === 'dark';
+  themeToggle.setAttribute('aria-label', dark ? '切换为浅色模式' : '切换为深色模式');
+  themeToggle.setAttribute('title', dark ? '切换浅色模式' : '切换深色模式');
+  themeToggle.setAttribute('aria-pressed', String(dark));
+}
+
+themeToggle.addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('timsparrow-theme', next); } catch (_) {}
+  syncThemeButton();
+});
+syncThemeButton();
 
 function closeMenu() {
   menuToggle.setAttribute('aria-expanded', 'false');
