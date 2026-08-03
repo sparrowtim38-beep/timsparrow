@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="interactions.css">
   <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="guestbook.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,7 +51,7 @@
   <nav class="nav">
     <a class="brand" href="#top"><span class="brand-mark">TS</span><span>TimSparrow</span></a>
     <button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="site-menu"><span></span><span></span></button>
-    <div class="nav-links" id="site-menu"><a href="#about">关于</a><a href="#radar">雷达</a><a href="#teams">主队</a><a href="#interests">兴趣</a><a class="nav-cta" href="#connect">认识我</a></div>
+    <div class="nav-links" id="site-menu"><a href="#about">关于</a><a href="#radar">雷达</a><a href="#teams">主队</a><a href="#interests">兴趣</a><a href="#guestbook">留言</a><a class="nav-cta" href="#connect">认识我</a></div>
   </nav>
 
   <main>
@@ -119,6 +120,27 @@
     </section>
 
     <section class="quote-section"><p>“世界很大，答案很多。<br>先保持好奇，再慢慢抵达。”</p></section>
+
+    <section class="guestbook section" id="guestbook">
+      <div class="guestbook-copy">
+        <p class="section-label">LEAVE A NOTE / 留句话</p>
+        <h2>路过这里，<br>留下一个想法。</h2>
+        <p>聊聊阿森纳、马刺、旅行、电影，或者只是简单说声你好。我会认真读每一条留言。</p>
+        <div class="prompt-list" aria-label="留言话题">
+          <button type="button" data-prompt="想和你聊聊阿森纳：">⚽ 阿森纳</button>
+          <button type="button" data-prompt="想和你聊聊马刺：">🏀 马刺</button>
+          <button type="button" data-prompt="推荐你去看看这个地方：">✈️ 旅行</button>
+          <button type="button" data-prompt="最近看了一部电影，想推荐给你：">🎬 电影</button>
+        </div>
+      </div>
+      <form class="guestbook-form" id="guestbook-form">
+        <label><span>你的名字</span><input id="guest-name" name="name" type="text" maxlength="40" placeholder="怎么称呼你？" autocomplete="name"></label>
+        <label><span>想说的话</span><textarea id="guest-message" name="message" maxlength="500" rows="8" placeholder="写下你此刻想到的……" required></textarea></label>
+        <div class="form-meta"><span id="draft-status">草稿会保存在你的设备上</span><span><b id="message-count">0</b>/500</span></div>
+        <button class="send-note" type="submit"><span>发送给 TimSparrow</span><b>↗</b></button>
+        <p class="form-note">提交后会打开你的邮件应用，并自动填好收件人和留言内容。</p>
+      </form>
+    </section>
 
     <section class="connect section" id="connect">
       <p class="section-label">LET’S CONNECT</p><h2>很高兴，<br>让你认识了我。</h2><p class="connect-intro">想聊聊共同感兴趣的事，欢迎通过下面的方式联系我。</p>

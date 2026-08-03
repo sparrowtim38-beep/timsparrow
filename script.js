@@ -73,3 +73,51 @@ if (!reducedMotion && matchMedia('(pointer: fine)').matches) {
     });
   });
 }
+
+const guestForm = document.querySelector('#guestbook-form');
+const guestName = document.querySelector('#guest-name');
+const guestMessage = document.querySelector('#guest-message');
+const messageCount = document.querySelector('#message-count');
+const draftStatus = document.querySelector('#draft-status');
+const draftKey = 'timsparrow-guestbook-draft';
+
+try {
+  const draft = JSON.parse(localStorage.getItem(draftKey) || '{}');
+  guestName.value = draft.name || '';
+  guestMessage.value = draft.message || '';
+} catch (_) {}
+
+function updateDraft() {
+  messageCount.textContent = guestMessage.value.length;
+  try {
+    localStorage.setItem(draftKey, JSON.stringify({ name: guestName.value, message: guestMessage.value }));
+    draftStatus.textContent = guestMessage.value ? '草稿已自动保存' : '草稿会保存在你的设备上';
+  } catch (_) {
+    draftStatus.textContent = '';
+  }
+}
+
+guestName.addEventListener('input', updateDraft);
+guestMessage.addEventListener('input', updateDraft);
+document.querySelectorAll('[data-prompt]').forEach(button => button.addEventListener('click', () => {
+  const prompt = button.dataset.prompt;
+  guestMessage.value = guestMessage.value ? `${guestMessage.value}\n${prompt}` : prompt;
+  guestMessage.focus();
+  updateDraft();
+}));
+
+guestForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const message = guestMessage.value.trim();
+  if (!message) {
+    guestMessage.focus();
+    return;
+  }
+  const sender = guestName.value.trim() || '一位网站访客';
+  const subject = encodeURIComponent(`来自个人网站的留言｜${sender}`);
+  const body = encodeURIComponent(`${message}\n\n—— ${sender}\n来自 TimSparrow 个人网站`);
+  try { localStorage.removeItem(draftKey); } catch (_) {}
+  location.href = `mailto:sparrowtim38@gmail.com?subject=${subject}&body=${body}`;
+});
+
+updateDraft();
