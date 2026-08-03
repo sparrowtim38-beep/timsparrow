@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="deep.css">
   <link rel="stylesheet" href="polish.css">
   <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="archive.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -106,10 +107,10 @@
     <section class="radar section" id="radar">
       <div class="radar-intro"><p class="section-label">MY RADAR / 我的雷达</p><h2>最近，总有一些问题<br>让我停下来多想一会。</h2><p>兴趣不一定需要互相解释。它们共同构成我观察世界的坐标。</p></div>
       <div class="radar-grid">
-        <article class="radar-card lime"><div class="radar-meta"><span>SCIENCE</span><span>01</span></div><h3>物理与规律</h3><p>圆周运动、电场，以及那些能用一个公式解释世界的瞬间。</p></article>
-        <article class="radar-card orange"><div class="radar-meta"><span>TRAVEL</span><span>02</span></div><h3>城市与远方</h3><p>从塞内加尔到乌拉圭，先在地图上出发，再去理解当地的生活。</p></article>
-        <article class="radar-card paper"><div class="radar-meta"><span>BASKETBALL</span><span>03</span></div><h3>马刺与成长</h3><p>我的篮球主队是圣安东尼奥马刺。我喜欢他们的团队篮球，也关注年轻球员如何兑现天赋。</p></article>
-        <article class="radar-card ink"><div class="radar-meta"><span>STORIES</span><span>04</span></div><h3>电影与现实</h3><p>在喜剧、影评和社会话题里，寻找故事与真实世界的连接。</p></article>
+        <article class="radar-card lime" role="button" tabindex="0" data-radar="physics" aria-haspopup="dialog"><div class="radar-meta"><span>SCIENCE</span><span>01</span></div><h3>物理与规律</h3><p>圆周运动、电场，以及那些能用一个公式解释世界的瞬间。</p><span class="radar-open">打开物理笔记 <b>↗</b></span></article>
+        <article class="radar-card orange" role="button" tabindex="0" data-radar="travel" aria-haspopup="dialog"><div class="radar-meta"><span>TRAVEL</span><span>02</span></div><h3>城市与远方</h3><p>从塞内加尔到乌拉圭，先在地图上出发，再去理解当地的生活。</p><span class="radar-open">查看旅行档案 <b>↗</b></span></article>
+        <article class="radar-card paper" role="button" tabindex="0" data-radar="basketball" aria-haspopup="dialog"><div class="radar-meta"><span>BASKETBALL</span><span>03</span></div><h3>马刺与成长</h3><p>我的篮球主队是圣安东尼奥马刺。我喜欢他们的团队篮球，也关注年轻球员如何兑现天赋。</p><span class="radar-open">查看篮球观察 <b>↗</b></span></article>
+        <article class="radar-card ink" role="button" tabindex="0" data-radar="stories" aria-haspopup="dialog"><div class="radar-meta"><span>STORIES</span><span>04</span></div><h3>电影与现实</h3><p>在喜剧、影评和社会话题里，寻找故事与真实世界的连接。</p><span class="radar-open">打开观影视角 <b>↗</b></span></article>
       </div>
     </section>
 
@@ -168,6 +169,17 @@
       </div>
     </section>
 
+    <section class="library section" id="library">
+      <div class="library-heading"><p class="section-label">INPUT SOURCES / 输入源</p><h2>下一批想读、<br>想看与想重温。</h2><p>这是一份候选清单，而不是完成记录。真正读完或看完后，我会把状态和短评更新在这里。</p></div>
+      <div class="library-shelf">
+        <article class="library-item book"><div class="item-type"><span>BOOK</span><b>想读</b></div><span class="book-spine">01</span><div><h3>《费曼物理学讲义》</h3><p>Richard P. Feynman</p><span>用直觉与好问题重新进入物理世界。</span></div></article>
+        <article class="library-item book"><div class="item-type"><span>BOOK</span><b>想读</b></div><span class="book-spine">02</span><div><h3>《枪炮、病菌与钢铁》</h3><p>Jared Diamond</p><span>从地理与历史的长尺度理解不同社会。</span></div></article>
+        <article class="library-item book"><div class="item-type"><span>BOOK</span><b>想读</b></div><span class="book-spine">03</span><div><h3>《禅与摩托车维修艺术》</h3><p>Robert M. Pirsig</p><span>关于技术、价值和“何为优良”的漫长追问。</span></div></article>
+        <article class="library-item film"><div class="item-type"><span>FILM</span><b>想重看</b></div><span class="film-frame">▶</span><div><h3>《点球成金》</h3><p>Moneyball · 2011</p><span>数据、体系与小市场球队如何挑战旧经验。</span></div></article>
+        <article class="library-item film"><div class="item-type"><span>FILM</span><b>想看</b></div><span class="film-frame">▶</span><div><h3>《白日梦想家》</h3><p>The Secret Life of Walter Mitty · 2013</p><span>从想象走向真实世界，也许就是旅行的开始。</span></div></article>
+      </div>
+    </section>
+
     <section class="quote-section"><p>“世界很大，答案很多。<br>先保持好奇，再慢慢抵达。”</p></section>
 
     <section class="guestbook section" id="guestbook">
@@ -199,8 +211,13 @@
       </div><a class="back-link" href="#top">回到开头 ↑</a>
     </section>
   </main>
-  <footer><span>© 2026 TIMSPARROW</span><span>MADE WITH CURIOSITY</span></footer>
+  <dialog class="radar-dialog" id="radar-dialog" aria-labelledby="radar-dialog-title">
+    <button class="dialog-close" type="button" aria-label="关闭档案">×</button>
+    <div id="radar-dialog-content"></div>
+  </dialog>
+  <div class="easter-toast" role="status" aria-live="polite"><span>✦</span><p>世界很大，答案很多。<br>先保持好奇，再慢慢抵达。</p></div>
+  <footer><span>© <button class="easter-trigger" type="button" aria-label="发现一个隐藏彩蛋">2026</button> TIMSPARROW</span><span>MADE WITH CURIOSITY</span></footer>
   <button class="to-top" type="button" aria-label="回到顶部">↑</button>
-  <script src="script.js?v=20260803-theme"></script>
+  <script src="script.js?v=20260803-archive"></script>
 </body>
 </html>
