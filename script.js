@@ -3,6 +3,23 @@ const progress = document.querySelector('.scroll-progress span');
 const toTop = document.querySelector('.to-top');
 const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
 const sections = [...document.querySelectorAll('main section[id]')];
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.nav-links');
+
+function closeMenu() {
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', '打开导航菜单');
+  document.body.classList.remove('menu-open');
+}
+
+menuToggle.addEventListener('click', () => {
+  const opening = menuToggle.getAttribute('aria-expanded') !== 'true';
+  menuToggle.setAttribute('aria-expanded', String(opening));
+  menuToggle.setAttribute('aria-label', opening ? '关闭导航菜单' : '打开导航菜单');
+  document.body.classList.toggle('menu-open', opening);
+});
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+addEventListener('resize', () => { if (innerWidth > 820) closeMenu(); });
 
 function updateScrollUI() {
   const max = document.documentElement.scrollHeight - innerHeight;
