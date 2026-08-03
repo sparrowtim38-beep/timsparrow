@@ -138,6 +138,22 @@ guestForm.addEventListener('submit', event => {
 
 updateDraft();
 
+const protectedPhone = document.querySelector('.protected-phone');
+protectedPhone?.addEventListener('click', () => {
+  const phone = ['+86', '137', '2555', '1112'].join('');
+  const display = ['+86', '137', '2555', '1112'].join(' ');
+  const number = protectedPhone.querySelector('strong');
+  const action = protectedPhone.querySelector('.contact-action');
+  if (protectedPhone.dataset.revealed === 'true') {
+    location.href = `tel:${phone}`;
+    return;
+  }
+  protectedPhone.dataset.revealed = 'true';
+  number.textContent = display;
+  action.innerHTML = '再次点击即可拨打 <b>↗</b>';
+  protectedPhone.setAttribute('aria-label', `拨打 ${display}`);
+});
+
 document.querySelectorAll('.faq details').forEach(item => {
   item.addEventListener('toggle', () => {
     if (!item.open) return;
