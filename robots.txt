@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sparrowtim38-beep.github.io/timsparrow/sitemap.xml
