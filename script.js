@@ -121,3 +121,12 @@ guestForm.addEventListener('submit', event => {
 });
 
 updateDraft();
+
+document.querySelectorAll('.faq details').forEach(item => {
+  item.addEventListener('toggle', () => {
+    if (!item.open) return;
+    document.querySelectorAll('.faq details[open]').forEach(other => {
+      if (other !== item) other.removeAttribute('open');
+    });
+  });
+});
