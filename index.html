@@ -57,7 +57,7 @@
     (() => {
       let saved = null;
       try { saved = localStorage.getItem('timsparrow-theme'); } catch (_) {}
-      const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      const dark = saved === 'dark';
       document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     })();
   </script>
@@ -104,7 +104,7 @@
         <article class="now-card"><span class="now-number">01</span><div class="now-icon">∆</div><p>LEARNING</p><h3>理解物理世界</h3><span>从圆周运动、向心加速度到电场，用公式建立直觉，再用自己的语言重新解释。</span><div class="status-line"><i></i><strong data-live-status="learning">正在整理圆周运动与电场的基础概念。</strong></div></article>
         <article class="now-card"><span class="now-number">02</span><div class="now-icon">◎</div><p>WATCHING</p><h3>关注球队成长</h3><span>追踪阿森纳和马刺，不只看比分，也观察体系、年轻球员与一支球队的长期建设。</span><div class="status-line"><i></i><strong data-live-status="football">阿森纳：持续关注球队状态。</strong></div></article>
         <article class="now-card"><span class="now-number">03</span><div class="now-icon">↗</div><p>EXPLORING</p><h3>从地图认识世界</h3><span>研究陌生国家的城市、食物、历史和生活方式，把“想去看看”变成更具体的理解。</span><div class="status-line"><i></i><strong data-live-status="basketball">马刺：关注年轻球员与团队磨合。</strong></div></article>
-        <article class="now-card"><span class="now-number">04</span><div class="now-icon">◐</div><p>OBSERVING</p><h3>从故事观察现实</h3><span>通过电影、影评和社会议题，理解一个故事如何反映职场、关系与时代情绪。</span><div class="status-line"><i></i><strong data-live-status="library">《点球成金》已加入想重看清单。</strong></div></article>
+        <article class="now-card"><span class="now-number">04</span><div class="now-icon">◐</div><p>OBSERVING</p><h3>从故事观察现实</h3><span>通过电影、影评和社会议题，理解一个故事如何反映职场、关系与时代情绪。</span><div class="status-line"><i></i><strong data-live-status="library">持续整理新的阅读与观察清单。</strong></div></article>
       </div>
       <p class="status-updated">LIVE STATUS · <span id="status-updated">更新于 2026.08.03</span></p>
     </section>
@@ -175,13 +175,11 @@
     </section>
 
     <section class="library section" id="library">
-      <div class="library-heading"><p class="section-label">INPUT SOURCES / 输入源</p><h2>下一批想读、<br>想看与想重温。</h2><p>这是一份候选清单，而不是完成记录。真正读完或看完后，我会把状态和短评更新在这里。</p></div>
+      <div class="library-heading"><p class="section-label">INPUT SOURCES / 输入源</p><h2>下一批，<br>想认真读的书。</h2><p>这是一份候选清单，而不是完成记录。真正读完后，我会把状态和短评更新在这里。</p></div>
       <div class="library-shelf">
         <article class="library-item book"><div class="item-type"><span>BOOK</span><b>想读</b></div><span class="book-spine">01</span><div><h3>《费曼物理学讲义》</h3><p>Richard P. Feynman</p><span>用直觉与好问题重新进入物理世界。</span></div></article>
         <article class="library-item book"><div class="item-type"><span>BOOK</span><b>想读</b></div><span class="book-spine">02</span><div><h3>《枪炮、病菌与钢铁》</h3><p>Jared Diamond</p><span>从地理与历史的长尺度理解不同社会。</span></div></article>
         <article class="library-item book"><div class="item-type"><span>BOOK</span><b>想读</b></div><span class="book-spine">03</span><div><h3>《禅与摩托车维修艺术》</h3><p>Robert M. Pirsig</p><span>关于技术、价值和“何为优良”的漫长追问。</span></div></article>
-        <article class="library-item film"><div class="item-type"><span>FILM</span><b>想重看</b></div><span class="film-frame">▶</span><div><h3>《点球成金》</h3><p>Moneyball · 2011</p><span>数据、体系与小市场球队如何挑战旧经验。</span></div></article>
-        <article class="library-item film"><div class="item-type"><span>FILM</span><b>想看</b></div><span class="film-frame">▶</span><div><h3>《白日梦想家》</h3><p>The Secret Life of Walter Mitty · 2013</p><span>从想象走向真实世界，也许就是旅行的开始。</span></div></article>
       </div>
     </section>
 
@@ -223,7 +221,7 @@
   <div class="easter-toast" role="status" aria-live="polite"><span>✦</span><p>世界很大，答案很多。<br>先保持好奇，再慢慢抵达。</p></div>
   <footer><span>© <button class="easter-trigger" type="button" aria-label="发现一个隐藏彩蛋">2026</button> TIMSPARROW</span><span>MADE WITH CURIOSITY</span></footer>
   <button class="to-top" type="button" aria-label="回到顶部">↑</button>
-  <script src="script.js?v=20260803-live"></script>
+  <script src="script.js?v=20260803-light-default"></script>
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"82851d86421c431b8066f935a6d35316"}'></script>
   <!-- End Cloudflare Web Analytics -->
