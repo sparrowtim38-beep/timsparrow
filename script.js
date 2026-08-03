@@ -20,7 +20,7 @@ addEventListener('resize', updateScrollUI);
 toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }));
 updateScrollUI();
 
-const revealItems = document.querySelectorAll('.section-label, .section h2, .about-copy > *, .radar-card, .interest-card, .principles-list article, .quote-section p, .contact-card');
+const revealItems = document.querySelectorAll('.section-label, .section h2, .about-copy > *, .radar-card, .team-card, .interest-card, .principles-list article, .quote-section p, .contact-card');
 if (reducedMotion) {
   revealItems.forEach(item => item.classList.add('is-revealed'));
 } else {
