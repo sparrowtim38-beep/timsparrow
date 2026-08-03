@@ -182,6 +182,7 @@ document.querySelectorAll('[data-radar]').forEach(card => {
     if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openRadarArchive(card.dataset.radar); }
   });
 });
+document.querySelectorAll('.radar-open').forEach(link => link.addEventListener('click', event => event.stopPropagation()));
 document.querySelector('.dialog-close').addEventListener('click', () => radarDialog.close());
 radarDialog.addEventListener('click', event => { if (event.target === radarDialog) radarDialog.close(); });
 radarDialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
@@ -201,3 +202,14 @@ easterTrigger.addEventListener('click', () => {
   clearTimeout(easterTimer);
   easterTimer = setTimeout(() => { easterToast.classList.remove('show'); document.body.classList.remove('easter-active'); }, 5000);
 });
+
+fetch('status.json', { cache: 'no-store' }).then(response => {
+  if (!response.ok) throw new Error('Status unavailable');
+  return response.json();
+}).then(data => {
+  Object.entries(data.items || {}).forEach(([key, value]) => {
+    const target = document.querySelector(`[data-live-status="${key}"]`);
+    if (target) target.textContent = value;
+  });
+  if (data.updated) document.querySelector('#status-updated').textContent = `更新于 ${data.updated}`;
+}).catch(() => {});
